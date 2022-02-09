@@ -256,7 +256,7 @@
     "yinquanteo",
     "zachnaidu",
     "ZrnH"
-  ],
+
   "message": "We require contributors to sign our Contributor License Agreement, and we don't have yours on file. In order for us to review and merge your code, please sign [CLA](https://forms.gle/YnmetmopXNxFxsDUA) to get yourself added.\n\n[The reviewers' guide](https://docs.sourcegraph.com/dev/contributing/accepting_contribution) for accepting the contribution.",
   "label": "cla-signed",
   "recheckComment": "The GitHub CLA Bot is rechecking to see that you have signed the CLA"
