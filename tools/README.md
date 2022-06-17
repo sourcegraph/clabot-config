@@ -16,3 +16,5 @@ You can manually sync contributors in an *additive* manner with the `sync` comma
 ```sh
 go run ./cmd/sync main.go
 ```
+
+You can also manually run the sync workflow from the ["Actions" tab of the repository](https://github.com/sourcegraph/clabot-config/actions).
