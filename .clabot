@@ -1,7 +1,7 @@
 {
   "message": "We require contributors to sign our Contributor License Agreement (CLA), and we don't have yours on file. In order for us to review and merge your code, please sign [CLA](https://forms.gle/YnmetmopXNxFxsDUA) to get yourself added.\n\nSourcegraph teammates should refer to [Accepting contirbutions](https://docs.sourcegraph.com/dev/contributing/accepting_contribution) for guidance.",
   "label": "cla-signed",
-  "recheckComment": "The GitHub CLA Bot is rechecking to see that you have [signed the CLA](https://github.com/sourcegraph/clabot-config)...",
+  "recheckComment": "The GitHub CLA Bot is rechecking to see that you have [signed the CLA](https://github.com/sourcegraph/clabot-config) - note that it may take up to 30 minutes for your response to be synchronized.",
   "contributors": [
     "0",
     "5h1rU",
