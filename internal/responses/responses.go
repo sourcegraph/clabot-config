@@ -84,7 +84,7 @@ func ListResponses(ctx context.Context, maxPages int) ([]Response, error) {
 	}); err != nil && err != io.EOF {
 		return responses, fmt.Errorf("forms.Responses.List: %w", err)
 	}
-	return responses, nil
+	return responses, err
 }
 
 func getTextAnswer(answers map[string]forms.Answer, questionID string) (string, error) {

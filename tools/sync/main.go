@@ -3,6 +3,8 @@ package main
 import (
 	"context"
 	"flag"
+	"fmt"
+	"io"
 	"os"
 
 	"github.com/sourcegraph/clabot-config/internal/clabot"
@@ -30,12 +32,18 @@ func main() {
 
 	resps, err := responses.ListResponses(ctx, *pages)
 	if err != nil {
-		println(err.Error())
-		os.Exit(1)
+		// EOF indicates we hit maximum pages
+		if err != io.EOF {
+			println(err.Error())
+			os.Exit(1)
+		}
+		fmt.Printf("Reached maximum pages %d\n", *pages)
 	}
+	fmt.Printf("Found %d responses\n", len(resps))
 	for _, resp := range resps {
 		// If not yet in config, add it
 		if _, exists := existingHandles[resp.GitHubHandle]; !exists {
+			fmt.Printf("Adding contributor %q (%s)\n", resp.GitHubHandle, resp.Name)
 			conf.Contributors = append(conf.Contributors, resp.GitHubHandle)
 			existingHandles[resp.GitHubHandle] = struct{}{} // for deduplication
 		}
@@ -45,4 +53,5 @@ func main() {
 		println(err.Error())
 		os.Exit(1)
 	}
+	fmt.Println("Configuration is up to date!")
 }
