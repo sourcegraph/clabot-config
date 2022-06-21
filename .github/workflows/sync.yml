@@ -27,7 +27,12 @@ jobs:
 
       - name: update .clabot-config
         run: |
-          git config user.name sourcegraph-bot
-          git config user.email sourcegraph-bot-github@sourcegraph.com
-          git commit -am "clabot: sync contributors that have signed the CLA"
-          git push
+          if git diff-index --name-status --exit-code HEAD; then
+            echo "No diff, exiting"
+          else
+            git config user.name sourcegraph-bot
+            git config user.email sourcegraph-bot-github@sourcegraph.com
+            git add .
+            git commit -am "clabot: sync contributors that have signed the CLA"
+            git push
+          fi
