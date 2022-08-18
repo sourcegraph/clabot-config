@@ -18,7 +18,8 @@ The service account currently in use is [clabot](https://console.cloud.google.co
 You can manually sync contributors in an *additive* manner with the `sync` command:
 
 ```sh
-go run ./cmd/sync main.go
+export GOOGLE_APPLICATION_CREDENTIALS="..."
+go run ./tools/sync main.go
 ```
 
 You can also manually run the sync workflow from the ["Actions" tab of the repository](https://github.com/sourcegraph/clabot-config/actions).
