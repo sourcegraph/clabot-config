@@ -18,6 +18,11 @@ func initLogging() func() error {
 		}))
 	}
 
-	liblog := log.Init(log.Resource{Name: "clabot-config"}, sinks...)
+	liblog := log.Init(log.Resource{
+		// https://docs.github.com/en/actions/learn-github-actions/environment-variables#default-environment-variables
+		Name:       os.Getenv("GITHUB_WORKFLOW"),
+		Namespace:  "clabot-config",
+		InstanceID: os.Getenv("GITHUB_RUN_ID"),
+	}, sinks...)
 	return liblog.Sync
 }
