@@ -24,6 +24,8 @@ jobs:
       - run: go run ./tools/sync
         env:
           GOOGLE_APPLICATION_CREDENTIALS: clabot-credentials.json
+          SRC_LOG_FORMAT: 'console'
+          SRC_DEVELOPMENT: 'true'
 
       - name: update .clabot-config
         run: |

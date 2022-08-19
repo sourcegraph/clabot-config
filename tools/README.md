@@ -23,3 +23,7 @@ go run ./tools/sync main.go
 ```
 
 You can also manually run the sync workflow from the ["Actions" tab of the repository](https://github.com/sourcegraph/clabot-config/actions).
+
+### Error reporting
+
+Error reporting to Sentry can be enabled by setting `SENTRY_DSN`.

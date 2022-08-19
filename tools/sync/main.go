@@ -3,9 +3,9 @@ package main
 import (
 	"context"
 	"flag"
-	"fmt"
 	"io"
-	"os"
+
+	"github.com/sourcegraph/log"
 
 	"github.com/sourcegraph/clabot-config/internal/clabot"
 	"github.com/sourcegraph/clabot-config/internal/responses"
@@ -20,38 +20,53 @@ func main() {
 
 	ctx := context.Background()
 
+	sync := initLogging()
+	defer sync()
+	logger := log.Scoped("sync", "tool to sync contributors")
+
+	// Read config and parse our contributors
 	conf, err := clabot.ParseConfig()
 	if err != nil {
-		println(err.Error())
-		os.Exit(1)
+		logger.Fatal("ParseConfig", log.Error(err))
 	}
 	existingHandles := make(map[string]struct{}, len(conf.Contributors))
 	for _, handle := range conf.Contributors {
 		existingHandles[handle] = struct{}{}
 	}
 
+	// List CLA form responses
 	resps, err := responses.ListResponses(ctx, *pages)
 	if err != nil {
 		// EOF indicates we hit maximum pages
 		if err != io.EOF {
-			println(err.Error())
-			os.Exit(1)
+			logger.Fatal("ListResponses", log.Error(err))
 		}
-		fmt.Printf("Reached maximum pages %d\n", *pages)
+		logger.Info("reached maximum pages", log.Int("pages", *pages))
 	}
-	fmt.Printf("Found %d responses\n", len(resps))
+	logger.Info("listed responses", log.Int("responses", len(resps)))
+
+	// For each response, if not yet in config, add it
+	var added int
 	for _, resp := range resps {
-		// If not yet in config, add it
 		if _, exists := existingHandles[resp.GitHubHandle]; !exists {
-			fmt.Printf("Adding contributor %q (%s)\n", resp.GitHubHandle, resp.Name)
+			logger.Info("adding contributor",
+				log.String("gitHubHandle", resp.GitHubHandle),
+				log.String("name", resp.Name))
+
 			conf.Contributors = append(conf.Contributors, resp.GitHubHandle)
 			existingHandles[resp.GitHubHandle] = struct{}{} // for deduplication
+			added += 1
 		}
 	}
 
-	if err := conf.Save(); err != nil {
-		println(err.Error())
-		os.Exit(1)
+	logger = logger.With(log.Int("added", added))
+	if added > 0 {
+		// Write updated configuration back
+		if err := conf.Save(); err != nil {
+			logger.Fatal("conf.Save", log.Error(err))
+		}
+		logger.Info("configuration is up to date")
+	} else {
+		logger.Info("no updates to make")
 	}
-	fmt.Println("Configuration is up to date!")
 }
