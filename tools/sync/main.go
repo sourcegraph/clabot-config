@@ -27,7 +27,7 @@ func main() {
 	// Read config and parse our contributors
 	conf, err := clabot.ParseConfig()
 	if err != nil {
-		logger.Fatal(err.Error())
+		logger.Fatal("ParseConfig", log.Error(err))
 	}
 	existingHandles := make(map[string]struct{}, len(conf.Contributors))
 	for _, handle := range conf.Contributors {
@@ -39,7 +39,7 @@ func main() {
 	if err != nil {
 		// EOF indicates we hit maximum pages
 		if err != io.EOF {
-			logger.Fatal(err.Error())
+			logger.Fatal("ListResponses", log.Error(err))
 		}
 		logger.Info("reached maximum pages", log.Int("pages", *pages))
 	}
@@ -52,18 +52,20 @@ func main() {
 			logger.Info("adding contributor",
 				log.String("gitHubHandle", resp.GitHubHandle),
 				log.String("name", resp.Name))
+
 			conf.Contributors = append(conf.Contributors, resp.GitHubHandle)
 			existingHandles[resp.GitHubHandle] = struct{}{} // for deduplication
 			added += 1
 		}
 	}
 
+	logger = logger.With(log.Int("added", added))
 	if added > 0 {
 		// Write updated configuration back
 		if err := conf.Save(); err != nil {
-			logger.Fatal(err.Error())
+			logger.Fatal("conf.Save", log.Error(err))
 		}
-		logger.Info("configuration is up to date", log.Int("added", added))
+		logger.Info("configuration is up to date")
 	} else {
 		logger.Info("no updates to make")
 	}
