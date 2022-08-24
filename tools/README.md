@@ -15,17 +15,14 @@ The service account currently in use is [clabot](https://console.cloud.google.co
 - `https://www.googleapis.com/auth/forms.responses.readonly`
 - `https://www.googleapis.com/auth/forms.body.readonly`
 
-In summary, the required variables are:
+If access cannot be granted directly to the service account, impersonation must be used.
+To set it up:
 
-```sh
-# must match GOOGLE_APPLICATION_CREDENTIALS
-export GOOGLE_TARGET_SERVICE_ACCOUNT="clabot@sourcegraph-ci.iam.gserviceaccount.com"
-export GOOGLE_APPLICATION_CREDENTIALS="..."
-# must have access to the form
-export GOOGLE_IMPERSONATE_USER="robert@sourcegraph.com"
-```
+- Grant domain-wide delegation to the service account
+- Set `GOOGLE_TARGET_SERVICE_ACCOUNT` to the address of the service account, e.g. `clabot@sourcegraph-ci.iam.gserviceaccount.com`
+- Set `GOOGLE_IMPERSONATE_USER` to the address of the target account to impersonate, e.g. `robert@sourcegraph.com`
 
-You can manually sync contributors in an *additive* manner with the `sync` command:
+You can then manually sync contributors in an *additive* manner with the `sync` command:
 
 ```sh
 go run ./tools/sync main.go
