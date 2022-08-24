@@ -4,9 +4,11 @@ import (
 	"context"
 	"fmt"
 	"io"
+	"os"
 	"strings"
 
 	"google.golang.org/api/forms/v1"
+	"google.golang.org/api/impersonate"
 	"google.golang.org/api/option"
 )
 
@@ -27,8 +29,16 @@ const (
 )
 
 func ListResponses(ctx context.Context, maxPages int) ([]Response, error) {
-	formsService, err := forms.NewService(ctx,
-		option.WithScopes(forms.FormsResponsesReadonlyScope, forms.FormsBodyReadonlyScope))
+	// Impersonate a user
+	tokenSource, err := impersonate.CredentialsTokenSource(ctx, impersonate.CredentialsConfig{
+		Subject:         os.Getenv("GOOGLE_IMPERSONATE_USER"),
+		TargetPrincipal: os.Getenv("GOOGLE_TARGET_SERVICE_ACCOUNT"),
+		Scopes:          []string{forms.FormsBodyReadonlyScope, forms.FormsResponsesReadonlyScope},
+	})
+	if err != nil {
+		return nil, fmt.Errorf("impersonate.CredentialsTokenSource: %w", err)
+	}
+	formsService, err := forms.NewService(ctx, option.WithTokenSource(tokenSource))
 	if err != nil {
 		return nil, fmt.Errorf("forms.NewService: %w", err)
 	}

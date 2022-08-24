@@ -15,10 +15,19 @@ The service account currently in use is [clabot](https://console.cloud.google.co
 - `https://www.googleapis.com/auth/forms.responses.readonly`
 - `https://www.googleapis.com/auth/forms.body.readonly`
 
+In summary, the required variables are:
+
+```sh
+# must match GOOGLE_APPLICATION_CREDENTIALS
+export GOOGLE_TARGET_SERVICE_ACCOUNT="clabot@sourcegraph-ci.iam.gserviceaccount.com"
+export GOOGLE_APPLICATION_CREDENTIALS="..."
+# must have access to the form
+export GOOGLE_IMPERSONATE_USER="robert@sourcegraph.com"
+```
+
 You can manually sync contributors in an *additive* manner with the `sync` command:
 
 ```sh
-export GOOGLE_APPLICATION_CREDENTIALS="..."
 go run ./tools/sync main.go
 ```
 

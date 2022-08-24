@@ -23,7 +23,11 @@ jobs:
 
       - run: go run ./tools/sync
         env:
+          # credentials and access
           GOOGLE_APPLICATION_CREDENTIALS: clabot-credentials.json
+          GOOGLE_TARGET_SERVICE_ACCOUNT: clabot@sourcegraph-ci.iam.gserviceaccount.com
+          GOOGLE_IMPERSONATE_USER: robert@sourcegraph.com
+          # log output
           SRC_LOG_FORMAT: 'console'
           SRC_DEVELOPMENT: 'true'
 
