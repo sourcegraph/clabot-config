@@ -35,4 +35,4 @@ You can also manually run the sync workflow from the ["Actions" tab of the repos
 Error reporting to Sentry can be enabled by setting `SENTRY_DSN`.
 Currently this should be configured to go to the `clabot` project: [`sourcegraph/clabot`](https://sentry.io/organizations/sourcegraph/issues/?project=6732169&query=&statsPeriod=14d).
 
-The logging is configured such that the `InstanceID` is `GITHUB_RUN_ID`.
+The logging is configured such that the `InstanceID` is the URL of the action run.
