@@ -33,3 +33,4 @@ You can also manually run the sync workflow from the ["Actions" tab of the repos
 ### Error reporting
 
 Error reporting to Sentry can be enabled by setting `SENTRY_DSN`.
+Currently this should be configured to go to the `clabot` project: [`sourcegraph/clabot`](https://sentry.io/organizations/sourcegraph/issues/?project=6732169&query=&statsPeriod=14d).
