@@ -359,6 +359,8 @@ github.com/smartystreets/assertions v0.0.0-20180927180507-b2de0cb4f26d/go.mod h1
 github.com/smartystreets/goconvey v1.6.4/go.mod h1:syvi0/a8iFYH4r/RixwvyeAJjdLS9QV7WQ/tjFTllLA=
 github.com/sourcegraph/log v0.0.0-20220901143117-fc0516a694c9 h1:JjFyvx9hCD5+JpuRV6t+gTQgGFvwkxXMZzOc4sLiPqc=
 github.com/sourcegraph/log v0.0.0-20220901143117-fc0516a694c9/go.mod h1:UxiwB6C3xk3xOySJpW1R0MDUyfGuJRFS5Z8C+SA5p2I=
+github.com/sourcegraph/log v0.0.0-20220909151047-a387bb6eb217 h1:DbJgCkZkn5F3nq5n4CFgW3hD3HAuQkILz/5UUZwsin8=
+github.com/sourcegraph/log v0.0.0-20220909151047-a387bb6eb217/go.mod h1:UxiwB6C3xk3xOySJpW1R0MDUyfGuJRFS5Z8C+SA5p2I=
 github.com/spaolacci/murmur3 v0.0.0-20180118202830-f09979ecbc72/go.mod h1:JwIasOWyU6f++ZhiEuf87xNszmSA2myDM2Kzu9HwQUA=
 github.com/spf13/afero v1.1.2/go.mod h1:j4pytiNVoe2o6bmDsKpLACNPDBIoEAkihy7loJ1B0CQ=
 github.com/spf13/cast v1.3.0/go.mod h1:Qx5cxh0v+4UWYiBimWS+eyWzqEqokIECu5etghLkUJE=

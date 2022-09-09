@@ -4,7 +4,7 @@ go 1.18
 
 require (
 	github.com/getsentry/sentry-go v0.13.0
-	github.com/sourcegraph/log v0.0.0-20220901143117-fc0516a694c9
+	github.com/sourcegraph/log v0.0.0-20220909151047-a387bb6eb217
 	google.golang.org/api v0.84.0
 )
 
