@@ -15,3 +15,9 @@ jobs:
       # Runs a single command using the runners shell
       - name: Validate if .clabot is valid JSON
         run: cat .clabot | jq
+
+  report_failure:
+    needs: check
+    if: ${{ failure() }}
+    uses: sourcegraph/sourcegraph/.github/workflows/report-job-failure.yml@main
+    secrets: inherit
