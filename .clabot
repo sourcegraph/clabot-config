@@ -431,6 +431,7 @@
     "sourcegraph-docker-auto-builds",
     "sourcegraph-dogfood-user",
     "sourcegraph-interviews",
+    "sourcegraph-release-bot",
     "sourcegraph-security-bot",
     "sqs",
     "srj427",
