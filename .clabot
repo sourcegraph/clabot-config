@@ -3,7 +3,7 @@
   "label": "cla-signed",
   "recheckComment": "The GitHub CLA Bot is rechecking to see that you have [signed the CLA](https://github.com/sourcegraph/clabot-config) - note that it may take up to 30 minutes for your response to be synchronized. For Sourcegraph teammates: see [how-to understand CLAbot failures](https://www.notion.so/sourcegraph/Understand-CLA-bot-failures-6dacba966d974542b5888aa8a08d67fc?pvs=4).",
   "contributors": [
-    " yuhangcangqian",
+    "yuhangcangqian",
     "0",
     "0xedb",
     "123",
@@ -466,7 +466,7 @@
     "tddschn",
     "tdmosk",
     "tech-ops-admin",
-    "techknowlogick ",
+    "techknowlogick",
     "test",
     "tester",
     "thenamankumar",
