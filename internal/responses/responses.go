@@ -118,5 +118,5 @@ func cleanGitHubHandle(handle string) string {
 	handle = strings.TrimPrefix(handle, "@")
 	// If a full URL is provided
 	handle = strings.TrimPrefix(handle, "https://github.com/")
-	return handle
+	return strings.TrimSpace(handle)
 }
