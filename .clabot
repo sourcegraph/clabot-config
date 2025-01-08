@@ -1,7 +1,7 @@
 {
-  "message": "We require contributors to sign our Contributor License Agreement (CLA), and we don't have yours on file. In order for us to review and merge your code, please sign [CLA](https://forms.gle/YnmetmopXNxFxsDUA) to get yourself added.\n\nSourcegraph teammates should refer to [Accepting contributions](https://docs.sourcegraph.com/dev/contributing/accepting_contribution) for guidance.",
+  "message": "We require contributors to sign our Contributor License Agreement (CLA), and we don't have yours on file. In order for us to review and merge your code, please sign [CLA](https://forms.gle/YnmetmopXNxFxsDUA) to get yourself added.\n\nSourcegraph teammates:\n- [Accepting contributions](https://www.notion.so/sourcegraph/contributing-accepting_contribution-md-49499217ef2048228de382318367416c?pvs=4)\n- [how-to diagnose CLA Bot failures](https://www.notion.so/sourcegraph/Understand-CLA-bot-failures-6dacba966d974542b5888aa8a08d67fc?pvs=4)",
   "label": "cla-signed",
-  "recheckComment": "The GitHub CLA Bot is rechecking to see that you have [signed the CLA](https://github.com/sourcegraph/clabot-config) - note that it may take up to 30 minutes for your response to be synchronized. For Sourcegraph teammates: see [how-to understand CLAbot failures](https://www.notion.so/sourcegraph/Understand-CLA-bot-failures-6dacba966d974542b5888aa8a08d67fc?pvs=4).",
+  "recheckComment": "The GitHub CLA Bot is rechecking to see that you have [signed the CLA](https://github.com/sourcegraph/clabot-config) - note that it may take up to 30 minutes for your response to be synchronized.\n\nFor Sourcegraph teammates: see [how-to diagnose CLA Bot failures](https://www.notion.so/sourcegraph/Understand-CLA-bot-failures-6dacba966d974542b5888aa8a08d67fc?pvs=4).",
   "contributors": [
     "0",
     "0xedb",
