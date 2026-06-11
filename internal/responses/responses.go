@@ -2,6 +2,7 @@ package responses
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"io"
 	"os"
@@ -91,7 +92,7 @@ func ListResponses(ctx context.Context, maxPages int) ([]Response, error) {
 			return io.EOF // exit
 		}
 		return nil
-	}); err != nil && err != io.EOF {
+	}); err != nil && !errors.Is(err, io.EOF) {
 		return responses, fmt.Errorf("forms.Responses.List: %w", err)
 	}
 	return responses, err

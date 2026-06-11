@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"errors"
 	"flag"
 	"io"
 
@@ -38,7 +39,7 @@ func main() {
 	resps, err := responses.ListResponses(ctx, *pages)
 	if err != nil {
 		// EOF indicates we hit maximum pages
-		if err != io.EOF {
+		if !errors.Is(err, io.EOF) {
 			logger.Fatal("ListResponses", log.Error(err))
 		}
 		logger.Info("reached maximum pages", log.Int("pages", *pages))
