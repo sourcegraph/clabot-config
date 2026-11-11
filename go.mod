@@ -1,6 +1,6 @@
 module github.com/sourcegraph/clabot-config
 
-go 1.18
+go 1.26.4
 
 require (
 	github.com/getsentry/sentry-go v0.13.0
